@@ -1,12 +1,20 @@
 import React from 'react';
-import { Image, Text, View, StyleSheet } from 'react-native'
+import { Image, Text, View, StyleSheet, TouchableOpacity } from 'react-native'
 import JigsawImage from '../assets/jigsaw.png';
 
 export default function CategoryListItem(props) {
-    return <View style={styles.container}>
-        <Text style={styles.title}>CategoryListItem</Text>
-        <Image style={styles.categoryImage} source={JigsawImage} />
-    </View>
+    const { category, onPress } = props;
+    return (
+        <TouchableOpacity
+        activeOpacity={0.5}
+        onPress={onPress}
+        >
+            <View style={styles.container}>
+                <Text style={styles.title}>{category.name}</Text>
+                <Image style={styles.categoryImage} source={JigsawImage} />
+            </View>
+        </TouchableOpacity>
+    )
 }
 
 const styles = StyleSheet.create({
@@ -19,7 +27,8 @@ const styles = StyleSheet.create({
       shadowOpacity: 0.3,
       shadowRadius: 10,
       shadowOffset: { width: 0, height: 0 },
-      elevation: 15
+      elevation: 16,
+      marginBottom: 16
     },
     categoryImage: {
         width: 64,
